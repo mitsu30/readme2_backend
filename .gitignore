@@ -29,4 +29,5 @@
 .history/
 .DS_Store
 .env
+.rubocop_todo.yml
 

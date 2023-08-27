@@ -35,6 +35,8 @@ group :development, :test do
 
   # Configuration. Load environment variables from .env
   gem 'dotenv-rails'
+  gem 'rspec-rails' 
+  gem 'factory_bot_rails'
 end
 
 group :development do
