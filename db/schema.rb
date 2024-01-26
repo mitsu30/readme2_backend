@@ -12,11 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2023_07_12_083551) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "pgcrypto"
-  enable_extension "plpgsql"
-
-  create_table "active_storage_attachments", force: :cascade do |t|
+  create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -26,7 +22,7 @@ ActiveRecord::Schema.define(version: 2023_07_12_083551) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
+  create_table "active_storage_blobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -38,13 +34,13 @@ ActiveRecord::Schema.define(version: 2023_07_12_083551) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", force: :cascade do |t|
+  create_table "active_storage_variant_records", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "answers", force: :cascade do |t|
+  create_table "answers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "body", null: false
     t.bigint "profile_id", null: false
     t.bigint "question_id", null: false
@@ -54,7 +50,7 @@ ActiveRecord::Schema.define(version: 2023_07_12_083551) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
-  create_table "communities", force: :cascade do |t|
+  create_table "communities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
     t.string "password", null: false
@@ -64,7 +60,7 @@ ActiveRecord::Schema.define(version: 2023_07_12_083551) do
     t.index ["owner_id"], name: "index_communities_on_owner_id"
   end
 
-  create_table "groups", force: :cascade do |t|
+  create_table "groups", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "community_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -72,7 +68,7 @@ ActiveRecord::Schema.define(version: 2023_07_12_083551) do
     t.index ["community_id"], name: "index_groups_on_community_id"
   end
 
-  create_table "image_texts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "image_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nickname"
     t.string "hobby"
     t.string "message"
@@ -81,7 +77,7 @@ ActiveRecord::Schema.define(version: 2023_07_12_083551) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "open_ranges", force: :cascade do |t|
+  create_table "open_ranges", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "profile_id", null: false
     t.bigint "community_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -90,7 +86,7 @@ ActiveRecord::Schema.define(version: 2023_07_12_083551) do
     t.index ["profile_id"], name: "index_open_ranges_on_profile_id"
   end
 
-  create_table "profiles", force: :cascade do |t|
+  create_table "profiles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "uuid", null: false
     t.integer "privacy", default: 0, null: false
     t.bigint "user_id", null: false
@@ -101,7 +97,7 @@ ActiveRecord::Schema.define(version: 2023_07_12_083551) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "questions", force: :cascade do |t|
+  create_table "questions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "item", null: false
     t.bigint "template_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -109,7 +105,7 @@ ActiveRecord::Schema.define(version: 2023_07_12_083551) do
     t.index ["template_id"], name: "index_questions_on_template_id"
   end
 
-  create_table "templates", force: :cascade do |t|
+  create_table "templates", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "image_path", null: false
     t.string "next_path", null: false
@@ -118,7 +114,7 @@ ActiveRecord::Schema.define(version: 2023_07_12_083551) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "user_communities", force: :cascade do |t|
+  create_table "user_communities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "community_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -127,7 +123,7 @@ ActiveRecord::Schema.define(version: 2023_07_12_083551) do
     t.index ["user_id"], name: "index_user_communities_on_user_id"
   end
 
-  create_table "user_groups", force: :cascade do |t|
+  create_table "user_groups", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -136,7 +132,7 @@ ActiveRecord::Schema.define(version: 2023_07_12_083551) do
     t.index ["user_id"], name: "index_user_groups_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "uid", null: false
     t.integer "role", default: 0, null: false
